@@ -1,0 +1,17 @@
+<div class="affinity" role="img" [attr.aria-label]="label + ' ' + value + '%'">
+  <svg
+    class="affinity__svg"
+    [attr.viewBox]="'0 0 ' + viewWidth + ' ' + viewHeight"
+    [attr.width]="drawWidth"
+    [attr.height]="size"
+    aria-hidden="true"
+    focusable="false">
+    <circle class="affinity__a" [attr.cx]="cx1" [attr.cy]="cy" [attr.r]="r" />
+    <circle class="affinity__b" [attr.cx]="cx2" [attr.cy]="cy" [attr.r]="r" />
+    <path class="affinity__lens" [attr.d]="lens" />
+  </svg>
+  <div class="affinity__text">
+    <strong class="affinity__value">{{ value }}%</strong>
+    <span class="affinity__label">{{ label }}</span>
+  </div>
+</div>

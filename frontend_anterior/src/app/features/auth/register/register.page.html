@@ -1,0 +1,75 @@
+<ion-content class="auth-content" [fullscreen]="true">
+  <div class="auth-shell">
+    <header class="auth-hero">
+      <div class="auth-inner">
+        <app-brand-logo [size]="40"></app-brand-logo>
+        <h1 class="auth-hero__title">Empieza a conectar con intención</h1>
+        <p class="auth-hero__text">Únete para encontrar a tu pareja ideal.</p>
+      </div>
+    </header>
+
+    <main class="auth-sheet">
+      <div class="auth-inner">
+        <h2 class="auth-form-title">Crea tu cuenta</h2>
+
+        <form (ngSubmit)="onRegister()">
+          <ion-item class="af-field" lines="none">
+            <ion-icon name="person-outline" slot="start" aria-hidden="true"></ion-icon>
+            <ion-input
+              type="text"
+              label="Nombre completo"
+              labelPlacement="stacked"
+              placeholder="Tu nombre"
+              autocomplete="name"
+              [(ngModel)]="name"
+              name="name"
+              required>
+            </ion-input>
+          </ion-item>
+
+          <ion-item class="af-field" lines="none">
+            <ion-icon name="mail-outline" slot="start" aria-hidden="true"></ion-icon>
+            <ion-input
+              type="email"
+              label="Correo electrónico"
+              labelPlacement="stacked"
+              placeholder="tucorreo@ejemplo.com"
+              autocomplete="email"
+              [(ngModel)]="email"
+              name="email"
+              required>
+            </ion-input>
+          </ion-item>
+
+          <ion-item class="af-field" lines="none">
+            <ion-icon name="lock-closed-outline" slot="start" aria-hidden="true"></ion-icon>
+            <ion-input
+              type="password"
+              label="Contraseña"
+              labelPlacement="stacked"
+              placeholder="Crea una contraseña"
+              autocomplete="new-password"
+              [(ngModel)]="password"
+              name="password"
+              required>
+              <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+            </ion-input>
+          </ion-item>
+
+          <ion-button
+            expand="block"
+            color="primary"
+            class="af-btn ion-margin-top"
+            type="submit"
+            [disabled]="!name || !email || !password">
+            Crear cuenta
+          </ion-button>
+        </form>
+
+        <p class="auth-switch">
+          ¿Ya tienes cuenta? <a routerLink="/login" class="af-link">Ingresa</a>
+        </p>
+      </div>
+    </main>
+  </div>
+</ion-content>

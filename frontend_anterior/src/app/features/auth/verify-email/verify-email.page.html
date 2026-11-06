@@ -1,0 +1,54 @@
+<ion-content class="auth-content" [fullscreen]="true">
+  <div class="auth-shell">
+    <header class="auth-hero">
+      <div class="auth-inner">
+        <app-brand-logo [size]="40"></app-brand-logo>
+        <h1 class="auth-hero__title">Revisa tu correo</h1>
+        <p class="auth-hero__text">Un último paso antes de armar tu perfil.</p>
+      </div>
+    </header>
+
+    <main class="auth-sheet">
+      <div class="auth-inner">
+        <div class="verify-mail" aria-hidden="true">
+          <ion-icon name="mail-open-outline"></ion-icon>
+        </div>
+
+        <h2 class="auth-form-title verify-title">Verifica tu correo electrónico</h2>
+        <p class="verify-text">
+          Enviamos un enlace de verificación a
+          <strong *ngIf="email; else yourEmail">{{ email }}</strong>
+          <ng-template #yourEmail>tu correo</ng-template>.
+          Ábrelo para confirmar que es tuyo. Si no lo ves, revisa la carpeta de spam.
+        </p>
+
+        <ion-button expand="block" color="primary" class="af-btn" (click)="continue()">
+          Ya verifiqué mi correo
+        </ion-button>
+
+        <ion-button
+          expand="block"
+          class="af-btn-soft ion-margin-top"
+          (click)="resend()"
+          [disabled]="status === 'sending' || cooldown > 0">
+          <ng-container *ngIf="cooldown > 0; else resendLabel">Reenviar en {{ cooldown }} s</ng-container>
+          <ng-template #resendLabel>{{ status === 'sending' ? 'Enviando…' : 'Reenviar correo' }}</ng-template>
+        </ion-button>
+
+        <div class="af-notice verify-status" role="status" *ngIf="status === 'sent'">
+          <ion-icon name="checkmark-circle-outline" aria-hidden="true"></ion-icon>
+          <span>Te enviamos un nuevo correo. Puede tardar un par de minutos.</span>
+        </div>
+        <div class="af-notice verify-status verify-status--error" role="alert" *ngIf="status === 'error'">
+          <ion-icon name="alert-circle-outline" aria-hidden="true"></ion-icon>
+          <span>No pudimos reenviar el correo. Inténtalo de nuevo en unos minutos.</span>
+        </div>
+
+        <p class="auth-switch">
+          ¿Te equivocaste de correo?
+          <a class="af-link" role="button" tabindex="0" (click)="changeEmail()" (keydown.enter)="changeEmail()">Corrígelo</a>
+        </p>
+      </div>
+    </main>
+  </div>
+</ion-content>

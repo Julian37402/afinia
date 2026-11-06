@@ -1,0 +1,106 @@
+// AFINIA · tokens de diseño y colores de Ionic.
+// Identidad: blanco (superficies), lila (marca) y rojo (acción y afecto).
+// Los tonos están suavizados a propósito para evitar el cansancio visual:
+// fondos casi blancos, lila muy claro para zonas de apoyo y rojo solo en acciones puntuales.
+// https://ionicframework.com/docs/theming/
+
+:root {
+  /* ───────── Tokens propios de AFINIA ───────── */
+  --af-lilac-50: #f7f4fd;
+  --af-lilac-100: #eee8fb;
+  --af-lilac-200: #e0d6f7;
+  --af-lilac-300: #c9baf0;
+  --af-lilac-400: #ad98e8;
+  --af-lilac-500: #8e74da;
+  --af-lilac-600: #6446be; /* color principal (texto blanco: contraste 6.6:1) */
+  --af-lilac-700: #4b3194;
+
+  --af-red: #d93249; /* acción / afecto (texto blanco: contraste 4.7:1) */
+  --af-red-deep: #a8213a;
+  --af-red-100: #fad9de;
+  --af-red-50: #fdeef0;
+
+  --af-ink: #2a2540;
+  --af-ink-soft: #625c7c;
+  --af-ink-faint: #8e89a6;
+  --af-bg: #faf9fd;
+  --af-surface: #ffffff;
+  --af-line: #ece8f6;
+
+  --af-r-sm: 12px;
+  --af-r-md: 16px;
+  --af-r-lg: 24px;
+  --af-r-xl: 32px;
+
+  /* Sombras teñidas de lila (más suaves que el gris neutro) */
+  --af-shadow-sm: 0 1px 2px rgba(42, 37, 64, 0.05), 0 8px 20px -10px rgba(100, 70, 190, 0.16);
+  --af-shadow-lg: 0 24px 48px -20px rgba(75, 49, 148, 0.3);
+
+  --af-font-display: 'Bricolage Grotesque', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --af-font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --af-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* ───────── Colores de Ionic ───────── */
+  --ion-font-family: var(--af-font-body);
+  --ion-background-color: #faf9fd;
+  --ion-background-color-rgb: 250, 249, 253;
+  --ion-text-color: #2a2540;
+  --ion-text-color-rgb: 42, 37, 64;
+
+  --ion-color-primary: #6446be;
+  --ion-color-primary-rgb: 100, 70, 190;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #593ea7;
+  --ion-color-primary-tint: #7459c5;
+
+  --ion-color-secondary: #c9baf0;
+  --ion-color-secondary-rgb: 201, 186, 240;
+  --ion-color-secondary-contrast: #2a2540;
+  --ion-color-secondary-contrast-rgb: 42, 37, 64;
+  --ion-color-secondary-shade: #b1a4d3;
+  --ion-color-secondary-tint: #cfc1f2;
+
+  --ion-color-tertiary: #d93249;
+  --ion-color-tertiary-rgb: 217, 50, 73;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #bf2c40;
+  --ion-color-tertiary-tint: #de4659;
+
+  --ion-color-success: #6446be;
+  --ion-color-success-rgb: 100, 70, 190;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #593ea7;
+  --ion-color-success-tint: #7459c5;
+
+  --ion-color-danger: #d93249;
+  --ion-color-danger-rgb: 217, 50, 73;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #bf2c40;
+  --ion-color-danger-tint: #de4659;
+
+  --ion-color-medium: #625c7c;
+  --ion-color-medium-rgb: 98, 92, 124;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 255, 255, 255;
+  --ion-color-medium-shade: #565070;
+  --ion-color-medium-tint: #726c8a;
+
+  --ion-color-light: #f1eef9;
+  --ion-color-light-rgb: 241, 238, 249;
+  --ion-color-light-contrast: #2a2540;
+  --ion-color-light-contrast-rgb: 42, 37, 64;
+  --ion-color-light-shade: #d4d1db;
+  --ion-color-light-tint: #f3f0fa;
+
+  --ion-color-dark: #2a2540;
+  --ion-color-dark-rgb: 42, 37, 64;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #252138;
+  --ion-color-dark-tint: #3f3a55;
+}

@@ -1,0 +1,94 @@
+// Burbujas de mensaje y barra de escritura del chat.
+
+/* Mensajes */
+.bubble-row {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.bubble-row--mine {
+  justify-content: flex-end;
+}
+
+.bubble {
+  max-width: 82%;
+  padding: 10px 14px 8px;
+  border: 1px solid var(--af-line);
+  border-radius: 20px 20px 20px 6px;
+  background: var(--af-surface);
+  color: var(--af-ink);
+}
+
+.bubble-row--mine .bubble {
+  border-color: transparent;
+  border-radius: 20px 20px 6px 20px;
+  background: var(--af-lilac-600);
+  color: #fff;
+}
+
+.bubble__text {
+  margin: 0;
+  font-size: 0.9688rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.bubble__time {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.6875rem;
+  text-align: right;
+  opacity: 0.7;
+}
+
+/* Barra de escritura */
+.chat-footer {
+  background: var(--af-surface);
+  border-top: 1px solid var(--af-line);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.chat-footer__error {
+  margin: 0;
+  padding: 8px 16px 0;
+  font-size: 0.8125rem;
+  color: var(--af-red-deep);
+}
+
+.composer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 10px 12px;
+}
+
+.composer__input {
+  flex: 1;
+  min-height: 48px;
+  --padding-start: 18px;
+  --padding-end: 18px;
+  border: 1.5px solid var(--af-line);
+  border-radius: 999px;
+  background: var(--af-lilac-50);
+  font-size: 1rem;
+}
+
+.composer__input.has-focus {
+  border-color: var(--af-lilac-500);
+  background: var(--af-surface);
+}
+
+.composer__send {
+  flex: none;
+  width: 48px;
+  height: 48px;
+  margin: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+  --border-radius: 50%;
+  --box-shadow: none;
+}

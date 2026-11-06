@@ -1,0 +1,76 @@
+.profile-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 0 24px;
+  text-align: center;
+}
+
+.profile-hero__name {
+  margin-top: 16px;
+}
+
+.profile-hero__city {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 6px 0 0;
+  color: var(--af-ink-soft);
+}
+
+.profile-notice {
+  margin-bottom: 16px;
+}
+
+.profile-notice__text {
+  margin: 0 0 4px;
+  overflow-wrap: anywhere;
+}
+
+.profile-card {
+  margin-bottom: 16px;
+}
+
+.profile-card__text {
+  margin: 10px 0 0;
+  line-height: 1.55;
+}
+
+.profile-card__text--muted {
+  color: var(--af-ink-soft);
+}
+
+.profile-card__label {
+  margin: 18px 0 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--af-ink-soft);
+}
+
+.profile-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.profile-logout {
+  margin-top: 24px;
+  --background: var(--af-red-50);
+  --background-hover: var(--af-red-100);
+  --background-activated: var(--af-red-100);
+  --color: var(--af-red-deep);
+}
+
+.profile-skeleton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.profile-skeleton__avatar {
+  width: 104px;
+  height: 104px;
+  margin: 0;
+  border-radius: 50%;
+}

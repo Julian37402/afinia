@@ -1,0 +1,71 @@
+.affinity {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.affinity__svg {
+  display: block;
+  flex: none;
+  overflow: visible;
+}
+
+.affinity__a {
+  fill: var(--af-lilac-400);
+}
+
+.affinity__b {
+  fill: var(--af-red);
+  transform-box: fill-box;
+  animation: affinity-join 700ms var(--af-ease) 120ms both;
+}
+
+.affinity__lens {
+  fill: var(--af-lilac-700);
+  animation: affinity-fade 500ms ease-out 520ms both;
+}
+
+.affinity__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.affinity__value {
+  font-family: var(--af-font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--af-ink);
+}
+
+.affinity__label {
+  margin-top: 2px;
+  font-size: 0.8125rem;
+  color: var(--af-ink-soft);
+}
+
+@keyframes affinity-join {
+  from {
+    transform: translateX(10px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes affinity-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .affinity__b,
+  .affinity__lens {
+    animation: none;
+  }
+}

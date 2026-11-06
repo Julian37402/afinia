@@ -1,0 +1,81 @@
+<ion-header class="ion-no-border af-header">
+  <ion-toolbar>
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="af-container">
+
+    <!-- Cargando -->
+    <div class="profile-skeleton" *ngIf="loading" aria-busy="true" aria-label="Cargando perfil">
+      <ion-skeleton-text [animated]="true" class="profile-skeleton__avatar"></ion-skeleton-text>
+      <ion-skeleton-text [animated]="true" style="width: 45%; height: 28px"></ion-skeleton-text>
+      <ion-skeleton-text [animated]="true" style="width: 100%; height: 120px; border-radius: 24px"></ion-skeleton-text>
+    </div>
+
+    <!-- Error -->
+    <app-empty-state
+      *ngIf="!loading && error"
+      icon="cloud-offline-outline"
+      heading="No pudimos cargar tu perfil"
+      text="Revisa tu conexión e inténtalo de nuevo.">
+      <ion-button color="primary" class="af-btn" (click)="retry()">Reintentar</ion-button>
+    </app-empty-state>
+
+    <ng-container *ngIf="!loading && !error && own as me">
+      <section class="profile-hero">
+        <app-avatar [name]="me.first_name" [src]="photo(me)" [size]="104"></app-avatar>
+        <h1 class="af-h1 profile-hero__name">{{ me.first_name }}, {{ me.age }}</h1>
+        <p class="profile-hero__city" *ngIf="me.city">
+          <ion-icon name="location-outline" aria-hidden="true"></ion-icon>{{ me.city }}
+        </p>
+      </section>
+
+      <!-- Verificación de correo -->
+      <div class="af-notice profile-notice" *ngIf="user && !user.email_verified">
+        <ion-icon name="mail-unread-outline" aria-hidden="true"></ion-icon>
+        <div>
+          <p class="profile-notice__text">Tu correo <strong>{{ user.email }}</strong> aún no está verificado.</p>
+          <a class="af-link" routerLink="/verify-email">Verificar correo</a>
+        </div>
+      </div>
+
+      <section class="af-card profile-card">
+        <h2 class="af-h2">Sobre mí</h2>
+        <p class="profile-card__text" *ngIf="me.bio; else noBio">{{ me.bio }}</p>
+        <ng-template #noBio>
+          <p class="profile-card__text profile-card__text--muted">Aún no has escrito una descripción.</p>
+        </ng-template>
+      </section>
+
+      <section class="af-card profile-card" *ngIf="prefs as p">
+        <h2 class="af-h2">Lo que buscas</h2>
+
+        <p class="profile-card__label">Personas</p>
+        <div class="profile-tags">
+          <span class="af-tag" *ngFor="let g of p.interested_in_genders">{{ gender(g) }}</span>
+        </div>
+
+        <p class="profile-card__label">Edades</p>
+        <div class="profile-tags">
+          <span class="af-tag">{{ p.min_age }} a {{ p.max_age }} años</span>
+        </div>
+
+        <ng-container *ngIf="p.target_relationship_type">
+          <p class="profile-card__label">Tipo de relación</p>
+          <div class="profile-tags">
+            <span class="af-tag af-tag--red">
+              <ion-icon name="heart" aria-hidden="true"></ion-icon>{{ goal(p.target_relationship_type) }}
+            </span>
+          </div>
+        </ng-container>
+      </section>
+
+      <ion-button expand="block" class="af-btn-soft profile-logout" (click)="logout()">
+        <ion-icon slot="start" name="log-out-outline" aria-hidden="true"></ion-icon>
+        Cerrar sesión
+      </ion-button>
+    </ng-container>
+  </div>
+</ion-content>

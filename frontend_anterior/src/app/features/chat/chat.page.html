@@ -1,0 +1,82 @@
+<ion-header class="ion-no-border af-header chat-header">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/matches" text="" aria-label="Volver a matches"></ion-back-button>
+    </ion-buttons>
+
+    <div class="chat-peer" *ngIf="match; else plainTitle">
+      <app-avatar [name]="match.other_user.first_name" [src]="photo" [size]="40"></app-avatar>
+      <div class="chat-peer__text">
+        <strong class="chat-peer__name">{{ match.other_user.first_name }}</strong>
+        <span class="chat-peer__meta" *ngIf="subtitle">{{ subtitle }}</span>
+      </div>
+    </div>
+    <ng-template #plainTitle><ion-title>Chat</ion-title></ng-template>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="chat-content">
+  <div class="chat-thread">
+
+    <div class="chat-loading" *ngIf="loading" aria-busy="true" aria-label="Cargando conversación">
+      <ion-skeleton-text [animated]="true" style="width: 55%"></ion-skeleton-text>
+      <ion-skeleton-text [animated]="true" class="chat-loading__mine" style="width: 40%"></ion-skeleton-text>
+      <ion-skeleton-text [animated]="true" style="width: 65%"></ion-skeleton-text>
+    </div>
+
+    <app-empty-state
+      *ngIf="!loading && error"
+      icon="cloud-offline-outline"
+      heading="No pudimos abrir el chat"
+      text="Revisa tu conexión e inténtalo de nuevo.">
+      <ion-button color="primary" class="af-btn" (click)="load()">Reintentar</ion-button>
+    </app-empty-state>
+
+    <!-- Conversación vacía -->
+    <div class="chat-hello" *ngIf="!loading && !error && match && messages.length === 0">
+      <app-avatar [name]="match.other_user.first_name" [src]="photo" [size]="84"></app-avatar>
+      <h2 class="af-h2">Hiciste match con {{ match.other_user.first_name }}</h2>
+      <p class="af-small">Rompe el hielo con un primer mensaje.</p>
+      <div class="chat-hello__ideas">
+        <button type="button" class="af-choice" *ngFor="let idea of icebreakers" (click)="useIcebreaker(idea)">
+          {{ idea }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Mensajes -->
+    <div
+      *ngFor="let m of messages; trackBy: trackById"
+      class="bubble-row"
+      [class.bubble-row--mine]="isMine(m)">
+      <div class="bubble">
+        <p class="bubble__text">{{ m.text }}</p>
+        <time class="bubble__time" [attr.datetime]="m.sent_at">{{ m.sent_at | date: 'HH:mm' }}</time>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border chat-footer" *ngIf="!error">
+  <p class="chat-footer__error" role="alert" *ngIf="sendError">No se envió el mensaje. Inténtalo de nuevo.</p>
+  <form class="composer" (ngSubmit)="send()">
+    <ion-input
+      class="composer__input"
+      name="draft"
+      placeholder="Escribe un mensaje"
+      aria-label="Mensaje"
+      autocomplete="off"
+      [maxlength]="maxLength"
+      [(ngModel)]="draft">
+    </ion-input>
+    <ion-button
+      type="submit"
+      class="composer__send"
+      shape="round"
+      color="primary"
+      aria-label="Enviar mensaje"
+      [disabled]="!draft.trim() || sending">
+      <ion-icon slot="icon-only" name="send" aria-hidden="true"></ion-icon>
+    </ion-button>
+  </form>
+</ion-footer>

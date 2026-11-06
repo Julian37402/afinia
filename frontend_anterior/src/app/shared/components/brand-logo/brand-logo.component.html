@@ -1,0 +1,8 @@
+<span class="brand">
+  <svg class="brand__mark" viewBox="0 0 40 40" [attr.width]="size" [attr.height]="size" aria-hidden="true" focusable="false">
+    <circle class="brand__a" cx="14" cy="20" r="12" />
+    <circle class="brand__b" cx="26" cy="20" r="12" />
+    <path class="brand__lens" d="M20 9.608A12 12 0 0 1 20 30.392A12 12 0 0 1 20 9.608Z" />
+  </svg>
+  <span class="brand__word" *ngIf="wordmark" [style.fontSize.px]="size * 0.78">afinia</span>
+</span>

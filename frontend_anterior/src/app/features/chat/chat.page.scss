@@ -1,0 +1,88 @@
+.chat-content {
+  --background: var(--af-lilac-50);
+}
+
+.chat-peer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.chat-peer__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.2;
+}
+
+.chat-peer__name {
+  font-family: var(--af-font-display);
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+
+.chat-peer__meta {
+  overflow: hidden;
+  font-size: 0.75rem;
+  color: var(--af-ink-soft);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chat-thread {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 16px 16px 12px;
+}
+
+/* Conversación vacía */
+.chat-hello {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 32px 8px 16px;
+  text-align: center;
+}
+
+.chat-hello h2 {
+  margin-top: 8px;
+}
+
+.chat-hello p {
+  margin: 0;
+}
+
+.chat-hello__ideas {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.chat-hello__ideas .af-choice {
+  text-align: left;
+  border-radius: var(--af-r-md);
+  font-weight: 500;
+}
+
+.chat-loading {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chat-loading ion-skeleton-text {
+  height: 40px;
+  margin: 0;
+  border-radius: 20px;
+}
+
+.chat-loading__mine {
+  align-self: flex-end;
+}

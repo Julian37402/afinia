@@ -1,0 +1,30 @@
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  line-height: 1;
+}
+
+.brand__mark {
+  display: block;
+  flex: none;
+}
+
+.brand__a {
+  fill: var(--af-lilac-400);
+}
+
+.brand__b {
+  fill: var(--af-red);
+}
+
+.brand__lens {
+  fill: var(--af-lilac-700);
+}
+
+.brand__word {
+  font-family: var(--af-font-display);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  color: var(--af-ink);
+}

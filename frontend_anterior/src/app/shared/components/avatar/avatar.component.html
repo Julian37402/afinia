@@ -1,0 +1,10 @@
+<div
+  class="avatar"
+  [class.avatar--fill]="fill"
+  [style.width.px]="fill ? null : size"
+  [style.height.px]="fill ? null : size"
+  [style.fontSize.px]="fill ? null : size * 0.38"
+  [style.background]="src ? null : background">
+  <img *ngIf="src; else initialsTpl" class="avatar__img" [src]="src" [alt]="name" />
+  <ng-template #initialsTpl><span aria-hidden="true">{{ initials }}</span></ng-template>
+</div>

@@ -1,0 +1,84 @@
+<ion-header class="ion-no-border af-header">
+  <ion-toolbar>
+    <ion-title>Matches</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="af-container">
+
+    <!-- Cargando -->
+    <div class="match-skeleton" *ngIf="loading" aria-busy="true" aria-label="Cargando matches">
+      <div class="match-skeleton__row" *ngFor="let n of [1, 2, 3]">
+        <ion-skeleton-text [animated]="true" class="match-skeleton__avatar"></ion-skeleton-text>
+        <div class="match-skeleton__lines">
+          <ion-skeleton-text [animated]="true" style="width: 40%"></ion-skeleton-text>
+          <ion-skeleton-text [animated]="true" style="width: 75%"></ion-skeleton-text>
+        </div>
+      </div>
+    </div>
+
+    <!-- Error -->
+    <app-empty-state
+      *ngIf="!loading && error"
+      icon="cloud-offline-outline"
+      heading="No pudimos cargar tus matches"
+      text="Revisa tu conexión e inténtalo de nuevo.">
+      <ion-button color="primary" class="af-btn" (click)="retry()">Reintentar</ion-button>
+    </app-empty-state>
+
+    <!-- Sin matches -->
+    <app-empty-state
+      *ngIf="!loading && !error && isEmpty"
+      icon="heart-outline"
+      heading="Aún no tienes matches"
+      text="Cuando a alguien le guste tu perfil y a ti el suyo, aparecerá aquí.">
+      <ion-button color="primary" class="af-btn" routerLink="/app/dashboard">Descubrir perfiles</ion-button>
+    </app-empty-state>
+
+    <!-- Nuevos matches -->
+    <section *ngIf="!loading && !error && fresh.length > 0" class="match-section">
+      <h2 class="af-h2 match-section__title">Nuevos matches</h2>
+      <ul class="match-rail">
+        <li *ngFor="let m of fresh; trackBy: trackById">
+          <a class="match-rail__item" [routerLink]="['/chat', m.id]" [attr.aria-label]="'Saludar a ' + m.other_user.first_name">
+            <span class="match-rail__avatar">
+              <app-avatar [name]="m.other_user.first_name" [src]="photo(m.other_user)" [size]="68"></app-avatar>
+            </span>
+            <span class="match-rail__name">{{ m.other_user.first_name }}</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Conversaciones -->
+    <section *ngIf="!loading && !error && conversations.length > 0" class="match-section">
+      <h2 class="af-h2 match-section__title">Mensajes</h2>
+      <ul class="match-list">
+        <li *ngFor="let m of conversations; trackBy: trackById">
+          <a class="match-row" [routerLink]="['/chat', m.id]">
+            <app-avatar [name]="m.other_user.first_name" [src]="photo(m.other_user)" [size]="56"></app-avatar>
+
+            <div class="match-row__body" *ngIf="m.last_message as last">
+              <div class="match-row__top">
+                <strong class="match-row__name">{{ m.other_user.first_name }}</strong>
+                <time class="match-row__time" [attr.datetime]="last.sent_at">{{ last.sent_at | date: 'dd/MM' }}</time>
+              </div>
+              <p class="match-row__preview" [class.is-unread]="m.unread_count > 0">
+                <span *ngIf="isMine(m)">Tú: </span>{{ last.text }}
+              </p>
+            </div>
+
+            <span class="match-row__badge" *ngIf="m.unread_count > 0" [attr.aria-label]="m.unread_count + ' mensajes sin leer'">
+              {{ m.unread_count }}
+            </span>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </div>
+</ion-content>

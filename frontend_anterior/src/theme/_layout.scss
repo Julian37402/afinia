@@ -1,0 +1,129 @@
+// Tarjetas, barra de pestañas inferior y pantallas de autenticación.
+
+.af-card {
+  padding: 20px;
+  border: 1px solid var(--af-line);
+  border-radius: var(--af-r-lg);
+  background: var(--af-surface);
+  box-shadow: var(--af-shadow-sm);
+}
+
+/* ───────── Barra de pestañas ───────── */
+ion-tab-bar.af-tabbar {
+  --background: var(--af-surface);
+  --border: 0;
+  min-height: 64px;
+  padding-top: 6px;
+  border-top: 1px solid var(--af-line);
+}
+
+ion-tab-bar.af-tabbar ion-tab-button {
+  --color: var(--af-ink-faint);
+  --color-selected: var(--af-lilac-700);
+  --ripple-color: var(--af-lilac-300);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+ion-tab-bar.af-tabbar ion-tab-button ion-icon {
+  box-sizing: content-box;
+  padding: 4px 18px;
+  border-radius: 999px;
+  font-size: 22px;
+  transition: background 0.25s ease;
+}
+
+ion-tab-bar.af-tabbar ion-tab-button.tab-selected ion-icon {
+  background: var(--af-lilac-100);
+}
+
+/* ───────── Autenticación (login, registro, verificación de correo) ───────── */
+.auth-content {
+  --background: var(--af-surface);
+}
+
+.auth-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.auth-hero {
+  position: relative;
+  overflow: hidden;
+  padding: calc(env(safe-area-inset-top, 0px) + 28px) 24px 60px;
+  background: var(--af-lilac-100);
+}
+
+/* Eco del logotipo: dos círculos que se cruzan, apenas insinuados */
+.auth-hero::before,
+.auth-hero::after {
+  content: '';
+  position: absolute;
+  top: -84px;
+  width: 190px;
+  height: 190px;
+  border: 2px solid var(--af-lilac-300);
+  border-radius: 50%;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.auth-hero::before {
+  right: 8px;
+}
+
+.auth-hero::after {
+  right: -72px;
+  border-color: var(--af-red-100);
+  opacity: 1;
+}
+
+.auth-inner {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.auth-hero__title {
+  margin: 28px 0 0;
+  max-width: 14ch;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.08;
+}
+
+.auth-hero__text {
+  margin: 10px 0 0;
+  max-width: 32ch;
+  color: var(--af-ink-soft);
+}
+
+.auth-sheet {
+  position: relative;
+  flex: 1;
+  margin-top: -28px;
+  padding: 32px 20px calc(env(safe-area-inset-bottom, 0px) + 28px);
+  border-radius: 28px 28px 0 0;
+  background: var(--af-surface);
+}
+
+.auth-form-title {
+  margin: 0 0 20px;
+  font-size: 1.375rem;
+  font-weight: 700;
+}
+
+.auth-switch {
+  margin: 24px 0 0;
+  text-align: center;
+  font-size: 0.9375rem;
+  color: var(--af-ink-soft);
+}
+
+.auth-back {
+  position: absolute;
+  top: calc(env(safe-area-inset-top, 0px) + 16px);
+  right: 0;
+}

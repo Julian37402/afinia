@@ -1,0 +1,143 @@
+.match-section {
+  margin-bottom: 28px;
+}
+
+.match-section__title {
+  margin-bottom: 14px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Nuevos matches: carrusel horizontal */
+.match-rail {
+  display: flex;
+  gap: 18px;
+  margin-inline: -20px;
+  padding: 4px 20px 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.match-rail::-webkit-scrollbar {
+  display: none;
+}
+
+.match-rail__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--af-ink);
+  text-decoration: none;
+}
+
+.match-rail__avatar {
+  display: flex;
+  padding: 3px;
+  border: 2px solid var(--af-red);
+  border-radius: 50%;
+}
+
+.match-rail__name {
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+/* Lista de conversaciones */
+.match-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.match-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px;
+  margin-inline: -12px;
+  border-radius: var(--af-r-md);
+  color: var(--af-ink);
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.match-row:active,
+.match-row:hover {
+  background: var(--af-lilac-50);
+}
+
+.match-row__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.match-row__top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.match-row__name {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.match-row__time {
+  flex: none;
+  font-size: 0.75rem;
+  color: var(--af-ink-faint);
+}
+
+.match-row__preview {
+  margin: 2px 0 0;
+  overflow: hidden;
+  font-size: 0.9375rem;
+  color: var(--af-ink-soft);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.match-row__preview.is-unread {
+  font-weight: 600;
+  color: var(--af-ink);
+}
+
+.match-row__badge {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 7px;
+  border-radius: 999px;
+  background: var(--af-red);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+/* Carga */
+.match-skeleton__row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 0;
+}
+
+.match-skeleton__avatar {
+  width: 56px;
+  height: 56px;
+  margin: 0;
+  border-radius: 50%;
+}
+
+.match-skeleton__lines {
+  flex: 1;
+}

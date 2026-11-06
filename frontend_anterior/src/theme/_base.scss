@@ -1,0 +1,108 @@
+// Base tipográfica y de página. Los tokens viven en theme/variables.scss.
+
+html,
+body {
+  background: var(--af-bg);
+}
+
+body {
+  font-family: var(--af-font-body);
+  color: var(--af-ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--af-font-display);
+  letter-spacing: -0.02em;
+  color: var(--af-ink);
+}
+
+p {
+  line-height: 1.5;
+}
+
+a {
+  color: var(--af-lilac-600);
+}
+
+ion-content {
+  --background: var(--af-bg);
+}
+
+/* Foco visible para teclado y lectores de pantalla */
+:focus-visible {
+  outline: 3px solid var(--af-lilac-300);
+  outline-offset: 2px;
+}
+
+/* Escala tipográfica */
+.af-h1 {
+  margin: 0;
+  font-size: 1.875rem;
+  font-weight: 800;
+  line-height: 1.12;
+}
+
+.af-h2 {
+  margin: 0;
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.af-lead {
+  margin: 8px 0 0;
+  font-size: 1rem;
+  color: var(--af-ink-soft);
+}
+
+.af-small {
+  font-size: 0.8125rem;
+  color: var(--af-ink-soft);
+}
+
+.af-link {
+  font-weight: 600;
+  color: var(--af-lilac-600);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.af-link:hover {
+  text-decoration: underline;
+}
+
+/* Contenedor de página centrado (móvil primero; en pantallas anchas se limita el ancho) */
+.af-container {
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 8px 20px 32px;
+}
+
+/* Cabecera clara, sin borde, sobre el fondo de la app */
+.af-header ion-toolbar {
+  --background: var(--af-bg);
+  --border-width: 0;
+  --color: var(--af-ink);
+}
+
+.af-header ion-title {
+  font-family: var(--af-font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.af-header ion-back-button,
+.af-header ion-button {
+  --color: var(--af-lilac-600);
+}
+
+.ion-no-border::after {
+  display: none;
+}

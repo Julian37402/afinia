@@ -1,0 +1,66 @@
+<ion-header class="ion-no-border af-header">
+  <ion-toolbar>
+    <div slot="start" class="discover-brand">
+      <app-brand-logo [size]="30"></app-brand-logo>
+    </div>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/app/profile" aria-label="Ir a mi perfil">
+        <ion-icon slot="icon-only" name="person-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- Tarjeta de Perfil -->
+  <div class="af-container discover" *ngIf="currentProfile; else noMoreProfiles">
+    <ng-container *ngFor="let p of [currentProfile]">
+      <article class="profile-card">
+        <div class="profile-card__hero">
+          <app-avatar [name]="p.first_name" [fill]="true"></app-avatar>
+          <div class="profile-card__shade"></div>
+          <div class="profile-card__id">
+            <h1 class="profile-card__name">{{ p.first_name }}, {{ p.age }}</h1>
+            <p class="profile-card__city">
+              <ion-icon name="location-outline" aria-hidden="true"></ion-icon>{{ p.city }}
+            </p>
+          </div>
+        </div>
+
+        <div class="profile-card__body">
+          <p class="profile-card__bio">{{ p.bio }}</p>
+
+          <!-- ML Afinidad -->
+          <app-affinity-meter *ngIf="p.affinityScore" [value]="p.affinityScore" [size]="46" label="Afinidad predictiva"></app-affinity-meter>
+        </div>
+      </article>
+    </ng-container>
+
+    <!-- Botones de Acción -->
+    <div class="swipe-actions">
+      <div class="swipe-action">
+        <button type="button" class="swipe-btn swipe-btn--pass" aria-label="Pasar" (click)="onPass()">
+          <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+        </button>
+        <span class="af-small">Pasar</span>
+      </div>
+
+      <div class="swipe-action">
+        <button type="button" class="swipe-btn swipe-btn--like" aria-label="Me gusta" (click)="onLike()">
+          <ion-icon name="heart" aria-hidden="true"></ion-icon>
+        </button>
+        <span class="af-small">Me gusta</span>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noMoreProfiles>
+    <div class="af-container">
+      <app-empty-state
+        icon="compass-outline"
+        heading="No hay más perfiles por ahora"
+        text="Vuelve más tarde para descubrir nuevas personas compatibles contigo.">
+      </app-empty-state>
+    </div>
+  </ng-template>
+</ion-content>

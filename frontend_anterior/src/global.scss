@@ -1,0 +1,19 @@
+/* Core CSS */
+@import "@ionic/angular/css/core.css";
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+@import "@ionic/angular/css/display.css";
+
+/* Sin modo oscuro: la identidad de AFINIA es clara (blanco, lila y rojo suave). */
+
+/* Sistema de diseño de AFINIA (los tokens están en theme/variables.scss) */
+@import "theme/base";
+@import "theme/controls";
+@import "theme/layout";
+@import "theme/chat";

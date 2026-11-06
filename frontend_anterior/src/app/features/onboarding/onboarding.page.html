@@ -1,0 +1,131 @@
+<ion-header class="ion-no-border af-header">
+  <ion-toolbar>
+    <div class="onboarding-brand">
+      <app-brand-logo [size]="30"></app-brand-logo>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="af-container onboarding">
+    <div class="onboarding__intro">
+      <h1 class="af-h1">Cuéntanos sobre ti</h1>
+      <p class="af-lead">Afinia usa estos datos para encontrar tus mejores coincidencias.</p>
+    </div>
+
+    <!-- Progreso -->
+    <div class="onboarding__progress">
+      <p class="af-small onboarding__step-label">Paso {{ currentStep }} de {{ totalSteps }}</p>
+      <ion-progress-bar [value]="currentStep / totalSteps" color="primary" aria-label="Progreso del perfil"></ion-progress-bar>
+    </div>
+
+    <div [ngSwitch]="currentStep">
+
+      <!-- Paso 1: Básicos -->
+      <section *ngSwitchCase="1" class="step-content">
+        <h2 class="af-h2 step-title">Datos básicos</h2>
+
+        <ion-item class="af-field" lines="none">
+          <ion-input label="Nombre" labelPlacement="stacked" placeholder="Tu nombre" autocomplete="given-name" [(ngModel)]="profile.first_name"></ion-input>
+        </ion-item>
+
+        <div class="step-group" role="radiogroup" aria-labelledby="gender-label">
+          <p class="step-group__label" id="gender-label">Género</p>
+          <div class="af-choice-list">
+            <button type="button" class="af-choice" role="radio"
+              [class.is-selected]="profile.gender === 'Masculino'"
+              [attr.aria-checked]="profile.gender === 'Masculino'"
+              (click)="profile.gender = 'Masculino'">Masculino</button>
+            <button type="button" class="af-choice" role="radio"
+              [class.is-selected]="profile.gender === 'Femenino'"
+              [attr.aria-checked]="profile.gender === 'Femenino'"
+              (click)="profile.gender = 'Femenino'">Femenino</button>
+            <button type="button" class="af-choice" role="radio"
+              [class.is-selected]="profile.gender === 'Otro'"
+              [attr.aria-checked]="profile.gender === 'Otro'"
+              (click)="profile.gender = 'Otro'">Otro</button>
+          </div>
+        </div>
+
+        <ion-item class="af-field" lines="none">
+          <ion-input type="number" label="Edad" labelPlacement="stacked" placeholder="Ej. 25" [(ngModel)]="profile.age"></ion-input>
+        </ion-item>
+
+        <ion-item class="af-field" lines="none">
+          <ion-icon name="location-outline" slot="start" aria-hidden="true"></ion-icon>
+          <ion-input label="Ciudad" labelPlacement="stacked" placeholder="Ej. Bogotá" autocomplete="address-level2" [(ngModel)]="profile.city"></ion-input>
+        </ion-item>
+      </section>
+
+      <!-- Paso 2: Psicológico (Analytics) -->
+      <section *ngSwitchCase="2" class="step-content">
+        <h2 class="af-h2 step-title">Test de personalidad</h2>
+        <p class="af-small step-instruction">Califica del 1 al 5 qué tan de acuerdo estás.</p>
+
+        <div class="question-block">
+          <div class="question-block__head">
+            <p class="question-block__text" id="q-intro">Soy una persona extrovertida</p>
+            <span class="question-block__value">{{ analytics.intro_extro }}</span>
+          </div>
+          <ion-range aria-labelledby="q-intro" [ticks]="true" [snaps]="true" [min]="1" [max]="5" [(ngModel)]="analytics.intro_extro">
+            <span slot="start">1</span>
+            <span slot="end">5</span>
+          </ion-range>
+        </div>
+
+        <div class="question-block">
+          <div class="question-block__head">
+            <p class="question-block__text" id="q-hobbies">Importancia de compartir hobbies</p>
+            <span class="question-block__value">{{ analytics.hobbies }}</span>
+          </div>
+          <ion-range aria-labelledby="q-hobbies" [ticks]="true" [snaps]="true" [min]="1" [max]="5" [(ngModel)]="analytics.hobbies">
+            <span slot="start">1</span>
+            <span slot="end">5</span>
+          </ion-range>
+        </div>
+
+        <div class="step-group" role="radiogroup" aria-labelledby="target-label">
+          <p class="step-group__label" id="target-label">¿Qué tipo de relación buscas?</p>
+          <div class="af-option-list">
+            <button type="button" class="af-option" role="radio"
+              [class.is-selected]="analytics.target === 'Una relación seria y estable'"
+              [attr.aria-checked]="analytics.target === 'Una relación seria y estable'"
+              (click)="analytics.target = 'Una relación seria y estable'">
+              <span class="af-option__mark"><ion-icon name="checkmark" aria-hidden="true"></ion-icon></span>
+              <span class="af-option__label">Relación seria y estable</span>
+            </button>
+            <button type="button" class="af-option" role="radio"
+              [class.is-selected]="analytics.target === 'Algo casual'"
+              [attr.aria-checked]="analytics.target === 'Algo casual'"
+              (click)="analytics.target = 'Algo casual'">
+              <span class="af-option__mark"><ion-icon name="checkmark" aria-hidden="true"></ion-icon></span>
+              <span class="af-option__label">Algo casual</span>
+            </button>
+            <button type="button" class="af-option" role="radio"
+              [class.is-selected]="analytics.target === 'Amistad primero y ver qué pasa'"
+              [attr.aria-checked]="analytics.target === 'Amistad primero y ver qué pasa'"
+              (click)="analytics.target = 'Amistad primero y ver qué pasa'">
+              <span class="af-option__mark"><ion-icon name="checkmark" aria-hidden="true"></ion-icon></span>
+              <span class="af-option__label">Amistad primero</span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Controles de navegación -->
+    <div class="onboarding__nav">
+      <ion-button class="af-btn-soft" (click)="prevStep()" [disabled]="currentStep === 1">
+        Atrás
+      </ion-button>
+
+      <ion-button color="primary" class="af-btn" (click)="nextStep()" *ngIf="currentStep < totalSteps">
+        Siguiente
+      </ion-button>
+
+      <ion-button color="primary" class="af-btn" (click)="finishOnboarding()" *ngIf="currentStep === totalSteps">
+        Finalizar
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

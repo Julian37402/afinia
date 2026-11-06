@@ -1,0 +1,40 @@
+.verify-mail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  margin-bottom: 20px;
+  border-radius: 50%;
+  background: var(--af-lilac-100);
+  color: var(--af-lilac-600);
+  font-size: 34px;
+}
+
+.verify-title {
+  margin-bottom: 10px;
+}
+
+.verify-text {
+  margin: 0 0 28px;
+  color: var(--af-ink-soft);
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.verify-text strong {
+  color: var(--af-ink);
+}
+
+.verify-status {
+  margin-top: 16px;
+}
+
+.verify-status--error {
+  background: var(--af-red-50);
+  border-color: var(--af-red-100);
+}
+
+.verify-status--error ion-icon {
+  color: var(--af-red);
+}

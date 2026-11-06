@@ -1,0 +1,201 @@
+// Botones, campos de formulario, opciones seleccionables y etiquetas.
+
+/* ───────── Botones ───────── */
+ion-button {
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 600;
+}
+
+.af-btn {
+  --border-radius: 999px;
+  --box-shadow: 0 12px 20px -12px rgba(100, 70, 190, 0.6);
+  height: 52px;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.af-btn[disabled] {
+  --box-shadow: none;
+}
+
+/* Botón tonal: acción secundaria sobre fondo claro */
+.af-btn-soft {
+  --border-radius: 999px;
+  --background: var(--af-lilac-100);
+  --background-hover: var(--af-lilac-200);
+  --background-activated: var(--af-lilac-200);
+  --color: var(--af-lilac-700);
+  --box-shadow: none;
+  height: 52px;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+/* Botón fantasma: acción terciaria */
+.af-btn-ghost {
+  --border-radius: 999px;
+  --color: var(--af-lilac-600);
+  height: 48px;
+  margin: 0;
+  font-weight: 700;
+}
+
+/* ───────── Campos de formulario ───────── */
+ion-item.af-field {
+  --background: var(--af-surface);
+  --border-radius: var(--af-r-md);
+  --border-width: 0;
+  --inner-border-width: 0;
+  --padding-start: 16px;
+  --inner-padding-end: 12px;
+  --min-height: 60px;
+  margin-bottom: 14px;
+  border: 1.5px solid var(--af-line);
+  border-radius: var(--af-r-md);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+ion-item.af-field ion-icon[slot='start'] {
+  margin-inline-end: 12px;
+  color: var(--af-ink-faint);
+  transition: color 0.2s ease;
+}
+
+ion-item.af-field ion-input,
+ion-item.af-field ion-select {
+  font-size: 1rem;
+  --placeholder-color: var(--af-ink-faint);
+  --placeholder-opacity: 1;
+}
+
+ion-item.af-field.item-has-focus {
+  border-color: var(--af-lilac-500);
+  box-shadow: 0 0 0 4px rgba(142, 116, 218, 0.18);
+}
+
+ion-item.af-field.item-has-focus ion-icon[slot='start'] {
+  color: var(--af-lilac-600);
+}
+
+/* ───────── Opciones seleccionables (chips y tarjetas de opción) ───────── */
+.af-choice-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.af-choice {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: 1.5px solid var(--af-line);
+  border-radius: 999px;
+  background: var(--af-surface);
+  color: var(--af-ink);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.af-choice.is-selected {
+  border-color: var(--af-lilac-500);
+  background: var(--af-lilac-100);
+  color: var(--af-lilac-700);
+}
+
+.af-option-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.af-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid var(--af-line);
+  border-radius: var(--af-r-md);
+  background: var(--af-surface);
+  color: var(--af-ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.af-option__mark {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--af-lilac-300);
+  border-radius: 50%;
+  color: transparent;
+  font-size: 14px;
+}
+
+.af-option__label {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.af-option.is-selected {
+  border-color: var(--af-lilac-500);
+  background: var(--af-lilac-50);
+}
+
+.af-option.is-selected .af-option__mark {
+  border-color: var(--af-lilac-600);
+  background: var(--af-lilac-600);
+  color: #fff;
+}
+
+/* ───────── Etiquetas ───────── */
+.af-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--af-lilac-100);
+  color: var(--af-lilac-700);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.af-tag--red {
+  background: var(--af-red-50);
+  color: var(--af-red-deep);
+}
+
+/* Aviso informativo */
+.af-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: var(--af-r-md);
+  background: var(--af-lilac-50);
+  border: 1px solid var(--af-lilac-200);
+  color: var(--af-ink);
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+.af-notice ion-icon {
+  flex: none;
+  margin-top: 1px;
+  font-size: 20px;
+  color: var(--af-lilac-600);
+}

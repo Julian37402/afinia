@@ -1,0 +1,61 @@
+<ion-content class="auth-content" [fullscreen]="true">
+  <div class="auth-shell">
+    <header class="auth-hero">
+      <div class="auth-inner">
+        <app-brand-logo [size]="40"></app-brand-logo>
+        <h1 class="auth-hero__title">Qué bueno verte de nuevo</h1>
+        <p class="auth-hero__text">Encuentra a tu pareja ideal, basada en datos.</p>
+      </div>
+    </header>
+
+    <main class="auth-sheet">
+      <div class="auth-inner">
+        <h2 class="auth-form-title">Inicia sesión</h2>
+
+        <form (ngSubmit)="onLogin()">
+          <ion-item class="af-field" lines="none">
+            <ion-icon name="mail-outline" slot="start" aria-hidden="true"></ion-icon>
+            <ion-input
+              type="email"
+              label="Correo electrónico"
+              labelPlacement="stacked"
+              placeholder="tucorreo@ejemplo.com"
+              autocomplete="email"
+              [(ngModel)]="email"
+              name="email"
+              required>
+            </ion-input>
+          </ion-item>
+
+          <ion-item class="af-field" lines="none">
+            <ion-icon name="lock-closed-outline" slot="start" aria-hidden="true"></ion-icon>
+            <ion-input
+              type="password"
+              label="Contraseña"
+              labelPlacement="stacked"
+              placeholder="Tu contraseña"
+              autocomplete="current-password"
+              [(ngModel)]="password"
+              name="password"
+              required>
+              <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+            </ion-input>
+          </ion-item>
+
+          <ion-button
+            expand="block"
+            color="primary"
+            class="af-btn ion-margin-top"
+            type="submit"
+            [disabled]="!email || !password">
+            Ingresar
+          </ion-button>
+        </form>
+
+        <p class="auth-switch">
+          ¿No tienes cuenta? <a routerLink="/register" class="af-link">Regístrate</a>
+        </p>
+      </div>
+    </main>
+  </div>
+</ion-content>

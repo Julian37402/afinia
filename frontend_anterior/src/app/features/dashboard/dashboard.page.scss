@@ -1,0 +1,131 @@
+.discover-brand {
+  padding-inline-start: 16px;
+}
+
+.discover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-card {
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--af-line);
+  border-radius: var(--af-r-xl);
+  background: var(--af-surface);
+  box-shadow: var(--af-shadow-lg);
+  animation: card-in 0.5s var(--af-ease) both;
+}
+
+.profile-card__hero {
+  position: relative;
+  height: clamp(260px, 42vh, 380px);
+}
+
+.profile-card__shade {
+  position: absolute;
+  inset: 40% 0 0;
+  background: linear-gradient(to top, rgba(42, 37, 64, 0.78), rgba(42, 37, 64, 0));
+}
+
+.profile-card__id {
+  position: absolute;
+  inset-inline: 22px;
+  bottom: 18px;
+  color: #fff;
+}
+
+.profile-card__name {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #fff;
+}
+
+.profile-card__city {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 6px 0 0;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.profile-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 20px 22px 24px;
+}
+
+.profile-card__bio {
+  margin: 0;
+  max-width: 60ch;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--af-ink);
+}
+
+.swipe-actions {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 24px;
+}
+
+.swipe-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.swipe-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  font-size: 32px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.swipe-btn:active {
+  transform: scale(0.92);
+}
+
+.swipe-btn--pass {
+  border: 1.5px solid var(--af-lilac-200);
+  background: var(--af-surface);
+  color: var(--af-lilac-600);
+  box-shadow: var(--af-shadow-sm);
+}
+
+.swipe-btn--like {
+  border: 0;
+  background: var(--af-red);
+  color: #fff;
+  box-shadow: 0 14px 24px -12px rgba(217, 50, 73, 0.7);
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profile-card {
+    animation: none;
+  }
+}
